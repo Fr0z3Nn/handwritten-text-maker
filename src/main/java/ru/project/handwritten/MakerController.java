@@ -17,14 +17,17 @@ public class MakerController {
     public TextArea textArea;
     @FXML
     public TextField inputPath;
+    @FXML
+    public TextField inputFont;
 
     StringBuilder progressText = new StringBuilder();
 
     @FXML
     public void initialize() {
         generation.setOnMouseClicked(event -> {
+            String font = inputFont.getText();
             log("Начинается процесс инициализации\n");
-            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText());
+            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),font);
             log("Файл найден, начинается процесс генерации\n");
             log("Ваш файл: " + docxDocument.getName());
             try {

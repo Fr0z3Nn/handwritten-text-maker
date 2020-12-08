@@ -8,8 +8,12 @@ import ru.project.handwritten.entity.DOCXDocument;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
 
 public class writeUtil {
+
+    private static volatile int fontSize;
+
     public static void writeFileWithWrittenFont(DOCXDocument docxDocument) throws IOException {
         String[] nameToCreate = docxDocument.getName().split("\\.");
         String newName = nameToCreate[0] + "-handMaker." + nameToCreate[1];
@@ -18,18 +22,25 @@ public class writeUtil {
         FileOutputStream fos = new FileOutputStream(writeFile);
         XWPFDocument writeDOC = new XWPFDocument();
 
-        /*String[] textParagraphs = text.split("\n");
-        System.out.println(Arrays.toString(textParagraphs));*/
 
-        XWPFParagraph tempParagraph = writeDOC.createParagraph();
+        for(String paragraph : docxDocument.getParagraphs()){
+            XWPFParagraph tempParagraph = writeDOC.createParagraph();
+            for(char letter : paragraph.toCharArray()){
+                XWPFRun tempRUN = tempParagraph.createRun();
+                tempRUN.setText(String.valueOf(letter));
+                    fontSize = (int)(Math.random()*10) + 15;
+                    tempRUN.setFontSize(fontSize);
 
+                int a = tempRUN.getFontSize();
+                tempRUN.setFontFamily(docxDocument.getFont());
 
-        for(char letter : docxDocument.getParagraphs().toCharArray()){
-            XWPFRun tempRUN = tempParagraph.createRun();
-            tempRUN.setText(String.valueOf(letter));
-            tempRUN.setFontSize((int)(Math.random() * 20));
+            }
         }
-        writeDOC.write(fos);
 
+        writeDOC.write(fos);
+        //writeDOC.close();
     }
+
 }
+
+// C:\Users\Sergey\IdeaProjects\handwritten-text-maker\src\main\resources\test.docx

@@ -12,12 +12,15 @@ import java.io.IOException;
 public class DOCXDocument {
     private String path;
     private String name;
-    //пока не массив
-    private String paragraphs;
+    //паграфы
+    private String[] paragraphs;
+    //применяемый шрифт
+    private String font;
 
-    public DOCXDocument(String path) {
+    public DOCXDocument(String path, String font) {
         File file = new File(path);
         this.name = file.getName();
+        this.font = font;
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(file.getAbsolutePath());
@@ -35,7 +38,7 @@ public class DOCXDocument {
         }
         XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(xwpfDocument);
         String text = xwpfWordExtractor.getText();
-        this.paragraphs = text;
+        this.paragraphs = text.split("\n");
     }
 
     public String getPath() {
@@ -54,11 +57,20 @@ public class DOCXDocument {
         this.name = name;
     }
 
-    public String getParagraphs() {
+    public String[] getParagraphs() {
         return paragraphs;
     }
 
-    public void setParagraphs(String paragraphs) {
+    public void setParagraphs(String[] paragraphs) {
         this.paragraphs = paragraphs;
     }
+
+    public String getFont() {
+        return font;
+    }
+
+    public void setFont(String font) {
+        this.font = font;
+    }
+
 }
