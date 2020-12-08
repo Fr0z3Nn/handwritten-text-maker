@@ -15,12 +15,14 @@ public class DOCXDocument {
     //паграфы
     private String[] paragraphs;
     //применяемый шрифт
-    private String font;
+    private String[] fonts;
+    private int fontSize;
 
-    public DOCXDocument(String path, String font) {
+    public DOCXDocument(String path, String font, String fontSize) {
         File file = new File(path);
         this.name = file.getName();
-        this.font = font;
+        this.fonts = font.split(",");
+        this.fontSize = Integer.parseInt(fontSize);
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(file.getAbsolutePath());
@@ -36,6 +38,7 @@ public class DOCXDocument {
            // MakerController.textArea.setText("Ошибка в создании файла, обратитесь к разработчику");
             e.printStackTrace();
         }
+
         XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(xwpfDocument);
         String text = xwpfWordExtractor.getText();
         this.paragraphs = text.split("\n");
@@ -65,12 +68,11 @@ public class DOCXDocument {
         this.paragraphs = paragraphs;
     }
 
-    public String getFont() {
-        return font;
+    public String[] getFonts() {
+        return fonts;
     }
 
-    public void setFont(String font) {
-        this.font = font;
+    public void setFonts(String[] fonts) {
+        this.fonts = fonts;
     }
-
 }
