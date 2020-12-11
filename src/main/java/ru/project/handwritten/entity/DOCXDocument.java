@@ -23,13 +23,17 @@ public class DOCXDocument {
     //процент ошибок
     private int mistakePercent;
 
-    public DOCXDocument(String path, String font, String fontSize, String spaceNum, String mistakePercent) {
+    //уплотнение
+    private double yplotnenie;
+
+    public DOCXDocument(String path, String font, String fontSize, String spaceNum, String mistakePercent,String yplotnenie) {
         File file = new File(path);
         this.name = file.getName();
         this.fonts = font.split(",");
         this.fontSize = Integer.parseInt(fontSize);
         this.spaceNum = Integer.parseInt(spaceNum);
         this.mistakePercent = Integer.parseInt(mistakePercent);
+        this.yplotnenie = Double.parseDouble(yplotnenie);
         FileInputStream fis = null;
 
         try {
@@ -107,5 +111,13 @@ public class DOCXDocument {
 
     public void setMistakePercent(int mistakePercent) {
         this.mistakePercent = mistakePercent;
+    }
+
+    public double getYplotnenie() {
+        return yplotnenie;
+    }
+
+    public void setYplotnenie(double yplotnenie) {
+        this.yplotnenie = yplotnenie;
     }
 }

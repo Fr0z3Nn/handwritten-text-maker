@@ -86,10 +86,11 @@ public class writeUtil {
 
                 //шафлим коллекцию для рандомного значения
                 Collections.shuffle(fonts);
-
+                tempRUN.setCharacterSpacing(-1000);
                 //ставим рандом шрифт
                 tempRUN.setFontFamily(fonts.get(0));
-
+                //ставим уплотнение
+                tempRUN.setCharacterSpacing(fromPXtoTwips(docxDocument.getYplotnenie()));
             }
         }
 
@@ -123,6 +124,10 @@ public class writeUtil {
             listOfFonts.add(font.trim());
         }
         return listOfFonts;
+    }
+
+    private static int fromPXtoTwips(double PX){
+        return (int) (-15.002846 * PX);
     }
 }
 

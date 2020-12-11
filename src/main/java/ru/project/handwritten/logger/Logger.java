@@ -1,7 +1,5 @@
 package ru.project.handwritten.logger;
 
-import ru.project.handwritten.MakerController;
-
 public class Logger {
     private static StringBuilder LoggerInfo = new StringBuilder();
 
