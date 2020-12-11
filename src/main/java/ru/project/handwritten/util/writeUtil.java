@@ -29,10 +29,24 @@ public class writeUtil {
         FileOutputStream fos = new FileOutputStream(writeFile);
         XWPFDocument writeDOC = new XWPFDocument();
 
+
+        ArrayList<String> ParagraphsWithRndMistake = new ArrayList<>();
+        for (String stroke : docxDocument.getParagraphs()){
+            StringBuilder strokeBuilder = new StringBuilder();
+            String[] words = stroke.split(" ");
+            for (String word : words){
+                strokeBuilder.append(word).append(" ");
+                if(isNeededToDuplicate(docxDocument.getMistakePercent())){
+                    strokeBuilder.append(word).append(" ");
+                }
+            }
+            ParagraphsWithRndMistake.add(strokeBuilder.toString());
+        }
+
         //создание параграфов с рандомным количеством пробелов
         ArrayList<String> ParagraphsWithRndSpace = new ArrayList<>();
         //создание рандомного количества пробелов
-        for (String stroke : docxDocument.getParagraphs()){
+        for (String stroke : ParagraphsWithRndMistake){
             StringBuilder strokeBuilder = new StringBuilder();
             for (char symbol : stroke.toCharArray()){
                 if(symbol == ' '){
@@ -81,6 +95,12 @@ public class writeUtil {
 
         writeDOC.write(fos);
         //writeDOC.close();
+    }
+
+    //метод на дублирование слов
+    //true-дублируем false-нет
+    private static boolean isNeededToDuplicate(int chanceOfMistake){
+        return (int)(Math.random()*100) < chanceOfMistake;
     }
 
     //метод генерации рандомного диапозона пробелов

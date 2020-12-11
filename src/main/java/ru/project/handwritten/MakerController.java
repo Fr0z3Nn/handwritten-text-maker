@@ -51,7 +51,7 @@ public class MakerController {
             Logger.logADD("Данные введены верно\n");
 
             Logger.logADD("Начинается процесс генерации\n");
-            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText(),spaceNum.getText());
+            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText(),spaceNum.getText(),mistakePercent.getText());
 
             Logger.logADD("Ваш файл: " + docxDocument.getName());
             try {

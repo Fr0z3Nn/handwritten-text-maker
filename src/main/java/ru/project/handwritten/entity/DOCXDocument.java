@@ -20,13 +20,16 @@ public class DOCXDocument {
     private int fontSize;
     //количество пробелов
     private int spaceNum;
+    //процент ошибок
+    private int mistakePercent;
 
-    public DOCXDocument(String path, String font, String fontSize, String spaceNum) {
+    public DOCXDocument(String path, String font, String fontSize, String spaceNum, String mistakePercent) {
         File file = new File(path);
         this.name = file.getName();
         this.fonts = font.split(",");
         this.fontSize = Integer.parseInt(fontSize);
         this.spaceNum = Integer.parseInt(spaceNum);
+        this.mistakePercent = Integer.parseInt(mistakePercent);
         FileInputStream fis = null;
 
         try {
@@ -96,5 +99,13 @@ public class DOCXDocument {
 
     public void setSpaceNum(int spaceNum) {
         this.spaceNum = spaceNum;
+    }
+
+    public int getMistakePercent() {
+        return mistakePercent;
+    }
+
+    public void setMistakePercent(int mistakePercent) {
+        this.mistakePercent = mistakePercent;
     }
 }
