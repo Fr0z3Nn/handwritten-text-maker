@@ -14,16 +14,21 @@ public class DOCXDocument {
     private String name;
     //паграфы
     private String[] paragraphs;
-    //применяемый шрифт
+    //применяемые шрифты
     private String[] fonts;
-    private int fontSize;
 
-    public DOCXDocument(String path, String font, String fontSize) {
+    private int fontSize;
+    //количество пробелов
+    private int spaceNum;
+
+    public DOCXDocument(String path, String font, String fontSize, String spaceNum) {
         File file = new File(path);
         this.name = file.getName();
         this.fonts = font.split(",");
         this.fontSize = Integer.parseInt(fontSize);
+        this.spaceNum = Integer.parseInt(spaceNum);
         FileInputStream fis = null;
+
         try {
             fis = new FileInputStream(file.getAbsolutePath());
             this.path = file.getAbsolutePath();
@@ -31,6 +36,7 @@ public class DOCXDocument {
            // MakerController.textArea.setText("Файл не был найден, введите правильный путь!");
             e.printStackTrace();
         }
+
         XWPFDocument xwpfDocument = null;
         try {
             xwpfDocument = new XWPFDocument(fis);
@@ -74,5 +80,21 @@ public class DOCXDocument {
 
     public void setFonts(String[] fonts) {
         this.fonts = fonts;
+    }
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public int getSpaceNum() {
+        return spaceNum;
+    }
+
+    public void setSpaceNum(int spaceNum) {
+        this.spaceNum = spaceNum;
     }
 }

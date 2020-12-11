@@ -27,7 +27,10 @@ public class MakerController {
     public TextField fontYplotnenie;
     @FXML
     public Button instruction;
-
+    @FXML
+    public TextField mistakePercent;
+    @FXML
+    public TextField spaceNum;
 
 
     @FXML
@@ -48,7 +51,7 @@ public class MakerController {
             Logger.logADD("Данные введены верно\n");
 
             Logger.logADD("Начинается процесс генерации\n");
-            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText());
+            DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText(),spaceNum.getText());
 
             Logger.logADD("Ваш файл: " + docxDocument.getName());
             try {

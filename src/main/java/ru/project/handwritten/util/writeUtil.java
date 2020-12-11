@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,15 +26,37 @@ public class writeUtil {
         String newPath = docxDocument.getPath().replace(docxDocument.getName(), newName);
         File writeFile = new File(newPath);
 
-
         FileOutputStream fos = new FileOutputStream(writeFile);
         XWPFDocument writeDOC = new XWPFDocument();
+
+        //создание параграфов с рандомным количеством пробелов
+        ArrayList<String> ParagraphsWithRndSpace = new ArrayList<>();
+        //создание рандомного количества пробелов
+        for (String stroke : docxDocument.getParagraphs()){
+            StringBuilder strokeBuilder = new StringBuilder();
+            for (char symbol : stroke.toCharArray()){
+                if(symbol == ' '){
+                    //пользовательское число пробелов
+                    for (int i = 0; i < docxDocument.getSpaceNum(); i++) {
+                        strokeBuilder.append(symbol);
+                    }
+                    //добавляем рандомное число пробелов
+                    int space = createRandomNumberForSpace();
+                    for (int i = 0; i < space; i++) {
+                        strokeBuilder.append(' ');
+                    }
+                }else{
+                    strokeBuilder.append(symbol);
+                }
+            }
+            ParagraphsWithRndSpace.add(strokeBuilder.toString());
+        }
 
         //создание листов с шрифтами для заполнения
         List<String> fonts = createListOfFonts(docxDocument);
 
         //создание параграфов
-        for (String paragraph : docxDocument.getParagraphs()) {
+        for (String paragraph : ParagraphsWithRndSpace) {
             XWPFParagraph tempParagraph = writeDOC.createParagraph();
             //наполнение параграфов
             for (char letter : paragraph.toCharArray()) {
@@ -43,7 +66,8 @@ public class writeUtil {
                 tempRUN.setText(String.valueOf(letter));
 
                 //ставим рандом высоту
-                fontSize = (int) (Math.random() * 10) + 15;
+                int rnd = createRandomNumberForFont();
+                fontSize = docxDocument.getFontSize() + rnd;
                 tempRUN.setFontSize(fontSize);
 
                 //шафлим коллекцию для рандомного значения
@@ -57,6 +81,20 @@ public class writeUtil {
 
         writeDOC.write(fos);
         //writeDOC.close();
+    }
+
+    //метод генерации рандомного диапозона пробелов
+    private static int createRandomNumberForSpace() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(0,0,0,0,0,1,1,1,2,2));
+        Collections.shuffle(list);
+        return list.get(0);
+    }
+
+    //метод генерации рандомного диапозона шрифта
+    private static int createRandomNumberForFont() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(0,-1,1));
+        Collections.shuffle(list);
+        return list.get(0);
     }
 
     private static List<String> createListOfFonts(DOCXDocument docxDocument) {

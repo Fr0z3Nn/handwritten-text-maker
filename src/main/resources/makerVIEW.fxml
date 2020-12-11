@@ -7,23 +7,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="342.0" prefWidth="624.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.project.handwritten.MakerController">
+<AnchorPane prefHeight="474.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.project.handwritten.MakerController">
    <children>
       <Text layoutX="134.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HandWritten Text Maker">
          <font>
             <Font name="Arial Bold" size="28.0" />
          </font></Text>
-      <Button fx:id="generation" layoutX="449.0" layoutY="159.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Запустить" />
-      <TextArea fx:id="textArea" layoutX="45.0" layoutY="198.0" prefHeight="112.0" prefWidth="510.0" />
-      <TextField fx:id="inputPath" layoutX="161.0" layoutY="59.0" prefHeight="25.0" prefWidth="406.0" promptText="С:\User\..." />
+      <Button fx:id="generation" layoutX="454.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Запустить" />
+      <TextArea fx:id="textArea" layoutX="45.0" layoutY="329.0" prefHeight="112.0" prefWidth="517.0" />
+      <TextField fx:id="inputPath" layoutX="161.0" layoutY="59.0" prefHeight="25.0" prefWidth="413.0" promptText="С:\User\..." />
       <Text layoutX="50.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Путь к файлу:" textAlignment="RIGHT" wrappingWidth="106.0" />
       <Text layoutX="94.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Шрифты:" textAlignment="RIGHT" wrappingWidth="61.0859375" />
-      <TextField fx:id="inputFont" layoutX="161.0" layoutY="89.0" prefHeight="25.0" prefWidth="406.0" promptText="Arial,Times New Roman,..." />
+      <TextField fx:id="inputFont" layoutX="161.0" layoutY="89.0" prefHeight="25.0" prefWidth="413.0" promptText="Arial,Times New Roman,..." />
       <TextField fx:id="fontSize" layoutX="161.0" layoutY="118.0" prefHeight="25.0" prefWidth="116.0" promptText="24" />
       <Text layoutX="9.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Средний размер шрифта:" textAlignment="RIGHT" wrappingWidth="145.0859375" />
-      <Text layoutX="287.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Среднее значение уплотнения:" textAlignment="RIGHT" wrappingWidth="181.0859375" />
-      <TextField fx:id="fontYplotnenie" layoutX="472.0" layoutY="118.0" prefHeight="25.0" prefWidth="95.0" promptText="2,1" />
-      <Text layoutX="17.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version 1.0.1" />
-      <Button fx:id="instruction" layoutX="50.0" layoutY="159.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Инструкция" />
+      <Text layoutX="295.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Среднее значение уплотнения:" textAlignment="RIGHT" wrappingWidth="181.0859375" />
+      <TextField fx:id="fontYplotnenie" layoutX="479.0" layoutY="118.0" prefHeight="25.0" prefWidth="95.0" promptText="2,1" />
+      <Text layoutX="17.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version 1.0.1" />
+      <Button fx:id="instruction" layoutX="50.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Инструкция" />
+      <Text layoutX="10.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Процент ошибки:" textAlignment="RIGHT" wrappingWidth="145.0859375" />
+      <TextField fx:id="mistakePercent" layoutX="161.0" layoutY="149.0" prefHeight="25.0" prefWidth="116.0" promptText="0-100" />
+      <TextField fx:id="spaceNum" layoutX="479.0" layoutY="149.0" prefHeight="25.0" prefWidth="95.0" promptText="1-5" />
+      <Text layoutX="280.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Минимальное значение пробелов:" textAlignment="RIGHT" wrappingWidth="197.0859375" />
    </children>
 </AnchorPane>
