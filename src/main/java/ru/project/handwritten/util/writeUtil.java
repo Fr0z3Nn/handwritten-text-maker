@@ -16,7 +16,7 @@ import java.util.List;
 public class writeUtil {
 
     private static volatile int fontSize;
-
+    private static boolean needStrike = false;
 
     public static void writeFileWithWrittenFont(DOCXDocument docxDocument) throws IOException {
 
@@ -29,16 +29,16 @@ public class writeUtil {
         FileOutputStream fos = new FileOutputStream(writeFile);
         XWPFDocument writeDOC = new XWPFDocument();
 
-
+        //генерация ошибок в параграфе
         ArrayList<String> ParagraphsWithRndMistake = new ArrayList<>();
         for (String stroke : docxDocument.getParagraphs()){
             StringBuilder strokeBuilder = new StringBuilder();
             String[] words = stroke.split(" ");
             for (String word : words){
-                strokeBuilder.append(word).append(" ");
                 if(isNeededToDuplicate(docxDocument.getMistakePercent())){
-                    strokeBuilder.append(word).append(" ");
+                    strokeBuilder.append("<").append(word).append(">").append(" ");
                 }
+                strokeBuilder.append(word).append(" ");
             }
             ParagraphsWithRndMistake.add(strokeBuilder.toString());
         }
@@ -76,8 +76,19 @@ public class writeUtil {
             for (char letter : paragraph.toCharArray()) {
                 XWPFRun tempRUN = tempParagraph.createRun();
 
+                // исходя из того что ошибки заключаются в <> зачеркиваем ошибки
+                //ставим тру в начале и фолс в конце зачеркивания
+                if (letter == '<') {needStrike = true; continue;}
+                if (letter == '>') {needStrike = false; continue;}
+
+
                 //задаем текст
                 tempRUN.setText(String.valueOf(letter));
+
+                // зачеркивания исходя из ошибок
+                if (needStrike){
+                    tempRUN.setStrikeThrough(true);
+                }
 
                 //ставим рандом высоту
                 int rnd = createRandomNumberForFont();

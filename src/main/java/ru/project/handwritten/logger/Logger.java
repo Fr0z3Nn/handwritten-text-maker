@@ -1,5 +1,6 @@
 package ru.project.handwritten.logger;
 
+
 public class Logger {
     private static StringBuilder LoggerInfo = new StringBuilder();
 
@@ -14,4 +15,6 @@ public class Logger {
     public static String logSHOW(){
         return LoggerInfo.toString();
     }
+
+
 }
