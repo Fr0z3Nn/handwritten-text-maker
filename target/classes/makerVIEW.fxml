@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -33,5 +35,15 @@
       <Button fx:id="chooseFile" layoutX="526.0" layoutY="59.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="..." />
       <Slider fx:id="sliderMistake" blockIncrement="1.0" layoutX="205.0" layoutY="149.0" minorTickCount="1" prefHeight="33.0" prefWidth="129.0" showTickLabels="true" />
       <Slider fx:id="sliderFont" blockIncrement="1.0" layoutX="206.0" layoutY="116.0" majorTickUnit="10.0" max="70.0" minorTickCount="1" prefHeight="33.0" prefWidth="129.0" showTickLabels="true" />
+      <ImageView fx:id="saveProp" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="33.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@8f35e2dfca3b87f92665f0d46c2bdb51.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="loadProp" accessibleRole="BUTTON" fitHeight="33.0" fitWidth="33.0" layoutX="55.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@0eeeea220e4c7aeb29d28a1893becf9c.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
