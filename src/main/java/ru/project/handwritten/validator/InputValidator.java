@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.project.handwritten.logger.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-
 @Getter
 @Setter
 @Builder
@@ -24,11 +21,15 @@ public class InputValidator {
         if (path.equals("")) {
             Logger.logADD("Введите полный путь к файлу\n");
             result = false;
+        }else {
+            Logger.logADD("✔ Путь к файлу указан верно, файл найден\n");
         }
 
         if (fonts.equals("")) {
             Logger.logADD("Введите список шрифтов\n");
             result = false;
+        }else {
+            Logger.logADD("✔ Список шрифтов распознан\n");
         }
 
         if (fontSize.equals("")) {
@@ -37,6 +38,7 @@ public class InputValidator {
         } else {
             try {
                 Integer.parseInt(fontSize);
+                Logger.logADD("✔ Размер шрифта определен\n");
             } catch (Exception e) {
                 Logger.logADD("Размер шрифта должен быть текстом\n");
                 result = false;

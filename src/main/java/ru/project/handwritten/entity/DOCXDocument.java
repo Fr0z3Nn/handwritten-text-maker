@@ -40,7 +40,7 @@ public class DOCXDocument {
             fis = new FileInputStream(file.getAbsolutePath());
             this.path = file.getAbsolutePath();
         } catch (FileNotFoundException e) {
-           // MakerController.textArea.setText("Файл не был найден, введите правильный путь!");
+           // "Файл не был найден, введите правильный путь!");
             e.printStackTrace();
         }
 
@@ -48,7 +48,7 @@ public class DOCXDocument {
         try {
             xwpfDocument = new XWPFDocument(fis);
         } catch (IOException e) {
-           // MakerController.textArea.setText("Ошибка в создании файла, обратитесь к разработчику");
+           // ("Ошибка в создании файла, обратитесь к разработчику");
             e.printStackTrace();
         }
 

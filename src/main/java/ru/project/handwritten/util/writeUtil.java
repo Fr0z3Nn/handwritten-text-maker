@@ -47,8 +47,22 @@ public class writeUtil {
         ArrayList<String> ParagraphsWithRndSpace = new ArrayList<>();
         //создание рандомного количества пробелов
         for (String stroke : ParagraphsWithRndMistake){
+
             StringBuilder strokeBuilder = new StringBuilder();
+            // отслеживаем предыдущий символ для добавления эскейпа перед словами
+            // изначалльно ставим равным пробелу, чтобы начинать прогонять сразу с начала
+            char previousSymb = ' ';
+
             for (char symbol : stroke.toCharArray()){
+                // заливаем рандом количество эскейп символов от 0 до 2
+                int rnd = createRandomNumberForFont() + 1;
+                // если предыдцщий символ проьбел а текущий не пробел то ставим рнд ескейп
+                if(symbol != ' ' && previousSymb == ' '){
+                    for (int i = 0; i < rnd; i++) {
+                        strokeBuilder.append("⠀");
+                    }
+                }
+
                 if(symbol == ' '){
                     //пользовательское число пробелов
                     for (int i = 0; i < docxDocument.getSpaceNum(); i++) {
@@ -56,12 +70,15 @@ public class writeUtil {
                     }
                     //добавляем рандомное число пробелов
                     int space = createRandomNumberForSpace();
-                    for (int i = 0; i < space; i++) {
+                    // вычитаем тут ескейпы из пробелов ЧТОБЫ НЕ ПОТЕРЯТЬ КОЛИЧЕСТВО ЗАДАННОЕ РАНДОМОМ (ЮЗЕР)
+                    for (int i = 0; i < space - rnd; i++) {
                         strokeBuilder.append(' ');
                     }
                 }else{
                     strokeBuilder.append(symbol);
                 }
+                // текущий символ становится предыдущим
+                previousSymb = symbol;
             }
             ParagraphsWithRndSpace.add(strokeBuilder.toString());
         }
@@ -74,6 +91,7 @@ public class writeUtil {
             XWPFParagraph tempParagraph = writeDOC.createParagraph();
             //наполнение параграфов
             for (char letter : paragraph.toCharArray()) {
+
                 XWPFRun tempRUN = tempParagraph.createRun();
 
                 // исходя из того что ошибки заключаются в <> зачеркиваем ошибки
@@ -85,8 +103,13 @@ public class writeUtil {
                 //задаем текст
                 tempRUN.setText(String.valueOf(letter));
 
-                // зачеркивания исходя из ошибок
+                // зачеркивания исходя из ошибок (зачеркивание целого слова)
                 if (needStrike){
+                    tempRUN.setStrikeThrough(true);
+                }
+
+                // зачеркивание букв (тупо букв по тексту)                       пробел           эскейп
+                if(isNeededToDuplicate(docxDocument.getMistakePercent()) && letter != ' ' && letter != '⠀'){
                     tempRUN.setStrikeThrough(true);
                 }
 

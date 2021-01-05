@@ -32,19 +32,20 @@ public class MakerController {
     @FXML
     public TextField spaceNum;
 
+    public static TextArea textAreaLOG;
 
     @FXML
     public void initialize() {
-
+        //присваиваем нашему логеру поле техареа с которым он будет работать
+        textAreaLOG = textArea;
         generation.setOnMouseClicked(event -> {
             InputValidator inputParams = InputValidator.builder()
                     .path(inputPath.getText())
                     .fontSize(fontSize.getText())
                     .fonts(inputFont.getText())
                     .build();
-            //тру все ок не тру все плохо
+            //если не проходим валидацию, то брейкаем и выводим ошибку
             if (!inputParams.check()){
-                textArea.setText(Logger.logSHOW());
                 return;
             }
 
@@ -61,7 +62,7 @@ public class MakerController {
             }
 
             Logger.logADD("\nФайл успешно сгенерирован!\n");
-            textArea.setText(Logger.logSHOW());
+
 
         });
     }
