@@ -1,24 +1,19 @@
 package ru.project.handwritten;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import ru.project.handwritten.entity.DOCXDocument;
 import ru.project.handwritten.logger.Logger;
 import ru.project.handwritten.util.writeUtil;
 import ru.project.handwritten.validator.InputValidator;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class MakerController {
@@ -42,12 +37,19 @@ public class MakerController {
     public TextField spaceNum;
 
     public static TextArea textAreaLOG;
+    //для работы с окнами
+    //private Desktop desktop = Desktop.getDesktop();
 
     // класс позволяющий выбирать файл
     final FileChooser fileChooser = new FileChooser();
 
     @FXML
     public Button chooseFile;
+
+    @FXML
+    public Slider sliderMistake;
+    @FXML
+    public Slider sliderFont;
 
     @FXML
     public void initialize() {
@@ -93,6 +95,10 @@ public class MakerController {
             }
         });
 
+        //слайдер для процента ошибок
+        sliderMistake.valueProperty().addListener((observable, oldValue, newValue) -> mistakePercent.setText(String.valueOf(newValue.intValue())));
+        //слайдер для размера шрифтов
+        sliderFont.valueProperty().addListener((observable, oldValue, newValue) -> fontSize.setText(String.valueOf(newValue.intValue())));
     }
 
 
