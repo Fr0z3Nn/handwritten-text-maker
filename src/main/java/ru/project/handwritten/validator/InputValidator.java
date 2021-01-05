@@ -66,6 +66,32 @@ public class InputValidator {
             }
         }
 
+        if (mistakePercent.equals("")) {
+            Logger.logADD("✖ Введите процент ошибок\n");
+            result = false;
+        } else {
+            try {
+                Integer.parseInt(spaceNum);
+                Logger.logADD("✔ Процент ошибок определен\n");
+            } catch (Exception e) {
+                Logger.logADD("✖ Процент ошибок должен быть числом\n");
+                result = false;
+            }
+        }
+
+        if (yplotnenie.equals("")) {
+            Logger.logADD("✖ Введите значение уплотнения в пикселях\n");
+            result = false;
+        } else {
+            try {
+                Integer.parseInt(spaceNum);
+                Logger.logADD("✔ Значение уплотнения определено\n");
+            } catch (Exception e) {
+                Logger.logADD("✖ Значение уплотнения должно быть числом\n");
+                result = false;
+            }
+        }
+
         if (!result){
             Logger.logADD("✖ ПРОИЗОШЛА ОШИБКА ✖\n");
         }

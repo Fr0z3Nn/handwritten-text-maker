@@ -1,5 +1,6 @@
 package ru.project.handwritten;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
@@ -58,12 +59,15 @@ public class MakerController {
         //название для окошка выбора файла
         fileChooser.setTitle("Выбор файла для генерации");
 
+        //при генерации сразу начинаем валидацию входных данных
         generation.setOnMouseClicked(event -> {
             InputValidator inputParams = InputValidator.builder()
                     .path(inputPath.getText())
                     .fontSize(fontSize.getText())
                     .fonts(inputFont.getText())
                     .spaceNum(spaceNum.getText())
+                    .mistakePercent(mistakePercent.getText())
+                    .yplotnenie(fontYplotnenie.getText())
                     .build();
             //если не проходим валидацию, то брейкаем и выводим ошибку
             if (!inputParams.check()){
@@ -99,6 +103,8 @@ public class MakerController {
         sliderMistake.valueProperty().addListener((observable, oldValue, newValue) -> mistakePercent.setText(String.valueOf(newValue.intValue())));
         //слайдер для размера шрифтов
         sliderFont.valueProperty().addListener((observable, oldValue, newValue) -> fontSize.setText(String.valueOf(newValue.intValue())));
+
+
     }
 
 
