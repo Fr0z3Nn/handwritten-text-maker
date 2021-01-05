@@ -1,6 +1,6 @@
 # HandWritten Text Maker
 ***
-[ССЫЛКА ДЛЯ СКАЧИВАНИЯ]()   
+[ССЫЛКА ДЛЯ СКАЧИВАНИЯ](https://drive.google.com/file/d/1yTIQsyhgasaFf9UvyjwoBBw05HKMA7V9/view?usp=sharing)   
 **текущая версия - 1.0.1**
 ***
 ### HandWritten Text Maker - это генератор рукописного текста (необходимы шрифты!)
