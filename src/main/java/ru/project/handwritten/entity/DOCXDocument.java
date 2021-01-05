@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DOCXDocument {
     private String path;
     private String name;
-    //паграфы
+    //параграфы
     private String[] paragraphs;
     //применяемые шрифты
     private String[] fonts;

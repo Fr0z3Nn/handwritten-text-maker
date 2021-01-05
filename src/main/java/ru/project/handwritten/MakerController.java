@@ -43,15 +43,17 @@ public class MakerController {
                     .path(inputPath.getText())
                     .fontSize(fontSize.getText())
                     .fonts(inputFont.getText())
+                    .spaceNum(spaceNum.getText())
                     .build();
             //если не проходим валидацию, то брейкаем и выводим ошибку
             if (!inputParams.check()){
                 return;
             }
 
-            Logger.logADD("Данные введены верно\n");
+            Logger.logADD("✔ Данные введены верно ✔\n");
 
             Logger.logADD("Начинается процесс генерации\n");
+
             DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText(),spaceNum.getText(),mistakePercent.getText(),fontYplotnenie.getText());
 
             Logger.logADD("Ваш файл: " + docxDocument.getName());
