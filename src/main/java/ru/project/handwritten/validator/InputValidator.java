@@ -22,7 +22,7 @@ public class InputValidator {
 
         Logger.logCLEAR();
 
-        Logger.logADD("Начинается процесс валидации\n");
+        Logger.logADD("НАЧИНАЕТСЯ ПРОЦЕСС ВАЛИДАЦИИ\n\n");
 
         boolean result = true;
 
@@ -93,7 +93,7 @@ public class InputValidator {
         }
 
         if (!result){
-            Logger.logADD("✖ ПРОИЗОШЛА ОШИБКА ✖\n");
+            Logger.logADD("\n✖ ПРОИЗОШЛА ОШИБКА ✖\n");
         }
         return result;
     }

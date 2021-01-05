@@ -6,15 +6,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ru.project.handwritten.entity.DOCXDocument;
 import ru.project.handwritten.logger.Logger;
+import ru.project.handwritten.saver.PropertyDOCX;
+import ru.project.handwritten.saver.PropertySaver;
 import ru.project.handwritten.util.writeUtil;
 import ru.project.handwritten.validator.InputValidator;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 
 public class MakerController {
@@ -51,9 +53,19 @@ public class MakerController {
     public Slider sliderMistake;
     @FXML
     public Slider sliderFont;
+    @FXML
+    public ImageView loadProp;
+    @FXML
+    public ImageView saveProp;
+
+    // создаем объект для сохранения / загрузки
+    PropertyDOCX propertyDOCX;
 
     @FXML
     public void initialize() {
+
+        //запрещаем изменение текста в окне textArea
+        textArea.editableProperty().setValue(false);
         //присваиваем нашему логеру поле техареа с которым он будет работать
         textAreaLOG = textArea;
         //название для окошка выбора файла
@@ -74,9 +86,9 @@ public class MakerController {
                 return;
             }
 
-            Logger.logADD("✔ Данные введены верно ✔\n");
+            Logger.logADD("\n✔ ДАННЫЕ ВВЕДЕНЫ ВЕРНО ✔\n\n");
 
-            Logger.logADD("Начинается процесс генерации\n");
+            Logger.logADD("Начинается процесс генерации\n\n");
 
             DOCXDocument docxDocument = new DOCXDocument(inputPath.getText(),inputFont.getText(),fontSize.getText(),spaceNum.getText(),mistakePercent.getText(),fontYplotnenie.getText());
 
@@ -104,7 +116,35 @@ public class MakerController {
         //слайдер для размера шрифтов
         sliderFont.valueProperty().addListener((observable, oldValue, newValue) -> fontSize.setText(String.valueOf(newValue.intValue())));
 
+        //чисто сохранение настроек
+        saveProp.setOnMouseClicked(event -> {
+            propertyDOCX = PropertyDOCX.builder()
+                    .fonts(inputFont.getText())
+                    .fontSize(fontSize.getText())
+                    .mistakePercent(mistakePercent.getText())
+                    .path(inputPath.getText())
+                    .spaceNum(spaceNum.getText())
+                    .yplotnenie(fontYplotnenie.getText())
+                    .build();
+            PropertySaver propertySaver = new PropertySaver(propertyDOCX);
+            propertySaver.save();
+            Logger.logCLEAR();
+            Logger.logADD("СОХРАНЕНИЕ ПРОШЛО УСПЕШНО");
+        });
 
+        //загрузка настроек
+        loadProp.setOnMouseClicked(event -> {
+            PropertySaver propertySaver = new PropertySaver();
+            PropertyDOCX propertyDOCX = propertySaver.load();
+            inputPath.setText(propertyDOCX.getPath());
+            inputFont.setText(propertyDOCX.getFonts());
+            mistakePercent.setText(propertyDOCX.getMistakePercent());
+            fontSize.setText(propertyDOCX.getFontSize());
+            spaceNum.setText(propertyDOCX.getSpaceNum());
+            fontYplotnenie.setText(propertyDOCX.getYplotnenie());
+            Logger.logCLEAR();
+            Logger.logADD("ЗАГРУЗКА ПРОШЛА УСПЕШНО");
+        });
     }
 
 

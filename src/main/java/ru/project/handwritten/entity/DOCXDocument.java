@@ -1,5 +1,7 @@
 package ru.project.handwritten.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import ru.project.handwritten.MakerController;
@@ -9,6 +11,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+@Getter
+@Setter
 public class DOCXDocument {
     private String path;
     private String name;
@@ -57,67 +61,5 @@ public class DOCXDocument {
         this.paragraphs = text.split("\n");
     }
 
-    public String getPath() {
-        return path;
-    }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String[] getParagraphs() {
-        return paragraphs;
-    }
-
-    public void setParagraphs(String[] paragraphs) {
-        this.paragraphs = paragraphs;
-    }
-
-    public String[] getFonts() {
-        return fonts;
-    }
-
-    public void setFonts(String[] fonts) {
-        this.fonts = fonts;
-    }
-
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    public void setFontSize(int fontSize) {
-        this.fontSize = fontSize;
-    }
-
-    public int getSpaceNum() {
-        return spaceNum;
-    }
-
-    public void setSpaceNum(int spaceNum) {
-        this.spaceNum = spaceNum;
-    }
-
-    public int getMistakePercent() {
-        return mistakePercent;
-    }
-
-    public void setMistakePercent(int mistakePercent) {
-        this.mistakePercent = mistakePercent;
-    }
-
-    public double getYplotnenie() {
-        return yplotnenie;
-    }
-
-    public void setYplotnenie(double yplotnenie) {
-        this.yplotnenie = yplotnenie;
-    }
 }
