@@ -15,7 +15,7 @@
          </font></Text>
       <Button fx:id="generation" layoutX="468.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Запустить" />
       <TextArea fx:id="textArea" layoutX="54.0" layoutY="220.0" prefHeight="112.0" prefWidth="520.0" />
-      <TextField fx:id="inputPath" layoutX="161.0" layoutY="59.0" prefHeight="25.0" prefWidth="413.0" promptText="С:\User\..." text="C:\Users\Sergey\IdeaProjects\handwritten-text-maker\src\main\resources\test.docx" />
+      <TextField fx:id="inputPath" layoutX="161.0" layoutY="59.0" prefHeight="25.0" prefWidth="358.0" promptText="С:\User\..." text="C:\Users\Sergey\IdeaProjects\handwritten-text-maker\src\main\resources\test.docx" />
       <Text layoutX="50.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Путь к файлу:" textAlignment="RIGHT" wrappingWidth="106.0" />
       <Text layoutX="94.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Шрифты:" textAlignment="RIGHT" wrappingWidth="61.0859375" />
       <TextField fx:id="inputFont" layoutX="161.0" layoutY="89.0" prefHeight="25.0" prefWidth="413.0" promptText="Arial,Times New Roman,..." text="IvoFont" />
@@ -29,5 +29,6 @@
       <TextField fx:id="mistakePercent" layoutX="161.0" layoutY="149.0" prefHeight="25.0" prefWidth="116.0" promptText="0-100" text="2" />
       <TextField fx:id="spaceNum" layoutX="479.0" layoutY="149.0" prefHeight="25.0" prefWidth="95.0" promptText="1-5" text="2" />
       <Text layoutX="280.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Минимальное значение пробелов:" textAlignment="RIGHT" wrappingWidth="197.0859375" />
+      <Button fx:id="chooseFile" layoutX="526.0" layoutY="59.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="..." />
    </children>
 </AnchorPane>
