@@ -16,7 +16,10 @@ import ru.project.handwritten.saver.PropertySaver;
 import ru.project.handwritten.util.writeUtil;
 import ru.project.handwritten.validator.InputValidator;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class MakerController {
@@ -144,6 +147,13 @@ public class MakerController {
             fontYplotnenie.setText(propertyDOCX.getYplotnenie());
             Logger.logCLEAR();
             Logger.logADD("ЗАГРУЗКА ПРОШЛА УСПЕШНО");
+        });
+        instruction.setOnMouseClicked(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/Fr0z3Nn/handwritten-text-maker"));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
         });
     }
 
