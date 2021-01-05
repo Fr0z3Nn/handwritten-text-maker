@@ -12,26 +12,49 @@
 
 <AnchorPane prefHeight="365.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.project.handwritten.MakerController">
    <children>
-      <Text layoutX="134.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HandWritten Text Maker">
+      <ImageView fitHeight="389.0" fitWidth="618.0" pickOnBounds="true">
+         <image>
+            <Image url="@wp6437081.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="174.0" layoutY="38.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="HandWritten Text Maker" wrappingWidth="386.349609375">
          <font>
-            <Font name="Arial Bold" size="28.0" />
+            <Font name="Britannic Bold" size="32.0" />
          </font></Text>
       <Button fx:id="generation" layoutX="468.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Запустить" />
       <TextArea fx:id="textArea" layoutX="54.0" layoutY="220.0" prefHeight="112.0" prefWidth="520.0" />
       <TextField fx:id="inputPath" layoutX="161.0" layoutY="59.0" prefHeight="25.0" prefWidth="358.0" promptText="С:\User\..." text="C:\Users\Sergey\IdeaProjects\handwritten-text-maker\src\main\resources\test.docx" />
-      <Text layoutX="50.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Путь к файлу:" textAlignment="RIGHT" wrappingWidth="106.0" />
-      <Text layoutX="94.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Шрифты:" textAlignment="RIGHT" wrappingWidth="61.0859375" />
+      <Text layoutX="50.0" layoutY="76.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Путь к файлу:" textAlignment="RIGHT" wrappingWidth="106.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text layoutX="94.0" layoutY="106.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Шрифты:" textAlignment="RIGHT" wrappingWidth="61.0859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <TextField fx:id="inputFont" layoutX="161.0" layoutY="89.0" prefHeight="25.0" prefWidth="413.0" promptText="Arial,Times New Roman,..." text="IvoFont" />
       <TextField fx:id="fontSize" layoutX="161.0" layoutY="118.0" prefHeight="25.0" prefWidth="41.0" promptText="24" text="12" />
-      <Text layoutX="9.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Средний размер шрифта:" textAlignment="RIGHT" wrappingWidth="145.0859375" />
-      <Text layoutX="350.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Значение уплотнения:" textAlignment="RIGHT" wrappingWidth="181.0859375" />
+      <Text layoutX="3.0" layoutY="134.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Средний размер шрифта:" textAlignment="RIGHT" wrappingWidth="151.0859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text layoutX="350.0" layoutY="135.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Значение уплотнения:" textAlignment="RIGHT" wrappingWidth="181.0859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <TextField fx:id="fontYplotnenie" layoutX="533.0" layoutY="118.0" prefHeight="25.0" prefWidth="41.0" promptText="0-5" text="1" />
       <Text layoutX="17.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version 1.0.1" />
       <Button fx:id="instruction" layoutX="55.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Инструкция" />
-      <Text layoutX="10.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Процент ошибки:" textAlignment="RIGHT" wrappingWidth="145.0859375" />
+      <Text layoutX="10.0" layoutY="165.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Процент ошибки:" textAlignment="RIGHT" wrappingWidth="145.0859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <TextField fx:id="mistakePercent" layoutX="161.0" layoutY="149.0" prefHeight="25.0" prefWidth="41.0" promptText="0-100" text="2" />
       <TextField fx:id="spaceNum" layoutX="533.0" layoutY="149.0" prefHeight="25.0" prefWidth="41.0" promptText="1-5" text="2" />
-      <Text layoutX="334.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Минимальное значение пробелов:" textAlignment="RIGHT" wrappingWidth="197.0859375" />
+      <Text layoutX="322.0" layoutY="164.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.5" text="Мин. значение пробелов:" textAlignment="RIGHT" wrappingWidth="208.0859375">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <Button fx:id="chooseFile" layoutX="526.0" layoutY="59.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="..." />
       <Slider fx:id="sliderMistake" blockIncrement="1.0" layoutX="205.0" layoutY="149.0" minorTickCount="1" prefHeight="33.0" prefWidth="129.0" showTickLabels="true" />
       <Slider fx:id="sliderFont" blockIncrement="1.0" layoutX="206.0" layoutY="116.0" majorTickUnit="10.0" max="70.0" minorTickCount="1" prefHeight="33.0" prefWidth="129.0" showTickLabels="true" />
