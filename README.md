@@ -52,5 +52,6 @@
  ***
  ### <a name="icons"></a>  Значки
  ![save](https://i.ibb.co/q164QQF/image.png) - Сохранение текущий настроек.   
- ![load](https://i.ibb.co/yS1gZnh/image.png) - Загрузка последних сохраненных настроек.    
+ ![load](https://i.ibb.co/yS1gZnh/image.png) - Загрузка последних сохраненных настроек.   
+ ***
  Найденные баги и ошибки просьба кидать в pull request
